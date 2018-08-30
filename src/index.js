@@ -312,6 +312,7 @@ const renderDirectory = async (current, acceptsJSON, handlers, methods, config, 
 	}
 
 	let files = await handlers.readdir(absolutePath);
+	const prePath = config.prePath ? config.prePath : '';
 
 	const canRenderSingle = renderSingle && (files.length === 1);
 
@@ -394,7 +395,7 @@ const renderDirectory = async (current, acceptsJSON, handlers, methods, config, 
 	// Add parent directory to the head of the sorted files array
 	if (toRoot.length > 0) {
 		const directoryPath = [...pathParts].slice(1);
-		const relative = path.join('/', ...directoryPath, '..', slashSuffix);
+		const relative = path.join('./', ...directoryPath, '..', slashSuffix);
 
 		files.unshift({
 			type: 'directory',
@@ -428,7 +429,8 @@ const renderDirectory = async (current, acceptsJSON, handlers, methods, config, 
 
 	const spec = {
 		files,
-		directory,
+	        directory,
+	        prePath,
 		paths: subPaths
 	};
 

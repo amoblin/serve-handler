@@ -187,7 +187,7 @@
           <i>Index of&nbsp;</i>
 
           {{~it.paths :value:index}}
-            <a href="/{{=value.url}}">{{=value.name}}</a>
+            <a href="{{=prePath}}/{{=value.url}}">{{=value.name}}</a>
           {{~}}
         </h1>
 
@@ -197,7 +197,7 @@
       <ul id="files">
         {{~it.files :value:index}}
           <li>
-            <a href="{{=value.relative}}" title="{{=value.title}}" class="{{=value.ext}}">{{=value.base}}</a>
+            <a href="{{=prePath}}{{=value.relative}}" title="{{=value.title}}" class="{{=value.ext}}">{{=value.base}}</a>
 			{{? value.size}}
 				<i>{{=value.size}}</i>
 			{{?}}
